@@ -1,0 +1,13 @@
+<input
+  type="text"
+  autocomplete="off"
+  placeholder="city, airport, station,region and district..."
+  spellcheck="false"
+  [formControl]="searchInput">
+<div *ngIf="myError"> too many results.. Please try again with more letters</div>
+<ul *ngIf="movies">
+  <li *ngFor="let dt of movies">
+    {{dt.title}}
+  </li>
+</ul>
+
