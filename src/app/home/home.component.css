@@ -10,3 +10,53 @@
 li {
   padding: 5px 0;
 }
+
+.label {
+  color: #444;
+  text-shadow: none;
+  display: block;
+  font-size: 0.875em;
+  line-height: 26px;
+}
+.container{
+  background-color: #f3ce56;
+  padding: 5%;
+}
+#ftsAutocomplete {
+  box-sizing: inherit;
+  padding: 12px 8% 12px 2%;
+  width: 90%;
+  line-height: 15px;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  background: #FEFEFE;
+  border-color: #a9a9a9;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 0.813em;
+  -webkit-appearance: textfield;
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+}
+input:focus {
+  outline-offset: -2px;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+h2{
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1.3em;
+  text-shadow: none;
+  padding-bottom: 10px;
+  color: #000;
+}

@@ -1,9 +1,14 @@
-<input
-  type="text"
-  autocomplete="off"
-  placeholder="city, airport, station,region and district..."
-  spellcheck="false"
-  [formControl]="searchInput">
+<div class="container">
+  <h2>Let’s find your ideal car</h2>
+  <div class="label">Pick-up Location</div>
+  <input
+    id="ftsAutocomplete"
+    type="text"
+    autocomplete="off"
+    placeholder="city, airport, station,region and district..."
+    spellcheck="false"
+    [formControl]="searchInput">
+</div>
 <div *ngIf="showNoResults" class="no-results-found">No Results Found</div>
 <ul *ngIf="cars" [class.menu]="cars.length">
   <li *ngFor="let dt of cars">
