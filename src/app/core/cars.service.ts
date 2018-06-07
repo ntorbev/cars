@@ -21,6 +21,7 @@ export class CarsService {
             throw new Error('NoResults');
           } else {
             this.myData = data.results.docs;
+            return this.myData;
           }
         })
       );
