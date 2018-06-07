@@ -13,9 +13,16 @@ export class CarsService {
   }
 
   getData(search: string): Observable<any> {
-    const results = 7;
-    // https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&solrRows=16&solrTerm=sofia
-    return this.http.get(`https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&solrRows=${results}&solrTerm=${search}`)
-      .pipe(map((data: any) => this.myData = data.results.docs));
+    const maxResults = 6;
+    return this.http.get(`https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&solrRows=${maxResults}&solrTerm=${search}`)
+      .pipe(
+        map((data: any) => {
+          if (data.results.docs[0].name === 'No results found') {
+            throw new Error('NoResults');
+          } else {
+            this.myData = data.results.docs;
+          }
+        })
+      );
   }
 }

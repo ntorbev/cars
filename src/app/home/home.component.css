@@ -1,0 +1,12 @@
+.menu {
+  background: #fffef3;
+  box-shadow: none;
+  border-radius: 0;
+  list-style-type: none;
+  margin: 0;
+  border: 1px solid #ccc;
+}
+
+li {
+  padding: 5px 0;
+}

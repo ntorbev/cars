@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 import { CarsService } from 'src/app/core/cars.service';
 
@@ -12,6 +12,7 @@ import { CarsService } from 'src/app/core/cars.service';
 export class HomeComponent implements OnInit {
   searchInput: FormControl = new FormControl('');
   cars = [];
+  showNoResults: boolean;
 
   constructor(private carsService: CarsService) {
   }
@@ -19,10 +20,18 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.searchInput.valueChanges.pipe(
       debounceTime(300),
-      distinctUntilChanged())
+      distinctUntilChanged(),
+      filter((val: string) => (val.length > 1)))
       .subscribe(value => {
           this.cars.length = 0;
-          this.carsService.getData(value).subscribe(data => this.cars = data);
+          this.carsService.getData(value).subscribe(data => {
+              this.cars = data;
+              this.showNoResults = false;
+            },
+            error => {
+              console.log(error);
+              this.showNoResults = true;
+            });
         }
       );
   }
